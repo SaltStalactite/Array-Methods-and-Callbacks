@@ -32,7 +32,7 @@ function getFinals(data) {
     })
     return allFinals;
 }
-console.log('task 2', getFinals(fifaData));
+// console.log('task 2', getFinals(fifaData));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -42,9 +42,10 @@ Use the higher-order function called getYears to do the following:
 3. Return an array called years containing all of the years in the getFinals data set*/
 
 function getYears(data, getFinalsCB) {
-    /* code here */// map over getfinalscb and return the years (item.year)
+    const years = getFinalsCB(data).map(item => item.Year)
+    return years
 }
-
+console.log('task 3', getYears(fifaData, getFinals));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -55,9 +56,20 @@ Use the higher-order function getWinners to do the following:
 4. Returns the names of all winning countries in an array called `winners` */
 
 function getWinners(data, getFinalsCB) {
-    /* code here */// map over getfinals and get winners using a conditional, disregard ties/overtime, return winnner based on points scored in game.
+    const winners = getFinalsCB(data).map((item) => {
+        if (item['Home Team Goals'] > item['Away Team Goals']) {
+            return item['Home Team Name']
+        }
+        else if (item['Away Team Goals'] > item['Home Team Goals']) {
+            return item['Away Team Name']
+        }
+        else {
+            return 'Tie'
+        }
+    })
+    return winners
 }
-
+console.log('task 4', getWinners(fifaData, getFinals));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -88,7 +100,8 @@ Use the higher order function getAverageGoals to do the following:
 */
 
 function getAverageGoals(getFinalsCB) {
-    /* code here */// reduce - add up all the home team and away team goals then divide the , if you want second decimal look up .toFixed(2);
+    /* code here */// reduce - add up all the home team and away team goals then divide by the length of the data set, if you want second decimal look up .toFixed(2);
+    // 2 steps
 }
 
 
