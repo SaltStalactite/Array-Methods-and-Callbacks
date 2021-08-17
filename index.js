@@ -85,9 +85,13 @@ hint: the strings returned need to exactly match the string in step 4.
 function getWinnersByYear(data, getYearsCB, getWinnersCB) {
     /* code here *///store result in a variable , use map with item and index
     //map over winners use index to refer to the year and use item to refer to the current value in winners
+    const years = getYearsCB(data, getFinals);
+    const winners = getWinnersCB(data, getFinals);
+    return winners.map(function (item, index) {
+        return `In ${years[index]}, ${item} won the world cup!`
+    })
 }
-
-
+console.log('task 5', getWinnersByYear(fifaData, getYears, getWinners))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher order function getAverageGoals to do the following: 
@@ -102,8 +106,12 @@ Use the higher order function getAverageGoals to do the following:
 function getAverageGoals(getFinalsCB) {
     /* code here */// reduce - add up all the home team and away team goals then divide by the length of the data set, if you want second decimal look up .toFixed(2);
     // 2 steps
+    const totalGoals = getFinalsCB.reduce(function (accumulator, item) {
+        return accumulator + item['Home Team Goals'] + item['Away Team Goals']
+    }, 0)
+    return (totalGoals / getFinalsCB.length).toFixed(2);
 }
-
+console.log('task 6', getAverageGoals(getFinals(fifaData)));
 
 
 
