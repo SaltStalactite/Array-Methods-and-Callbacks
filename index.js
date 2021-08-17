@@ -27,9 +27,12 @@ hint - you should be looking at the stage key inside of the objects
 */
 
 function getFinals(data) {
-    /* code here */
+    const allFinals = data.filter(function (item) {
+        return item.Stage === 'Final';
+    })
+    return allFinals;
 }
-
+console.log('task 2', getFinals(fifaData));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -38,8 +41,8 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
-    /* code here */
+function getYears(data, getFinalsCB) {
+    /* code here */// map over getfinalscb and return the years (item.year)
 }
 
 
@@ -51,8 +54,8 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(data, getFinalsCB) {
+    /* code here */// map over getfinals and get winners using a conditional, disregard ties/overtime, return winnner based on points scored in game.
 }
 
 
@@ -67,8 +70,9 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(data, getYearsCB, getWinnersCB) {
+    /* code here *///store result in a variable , use map with item and index
+    //map over winners use index to refer to the year and use item to refer to the current value in winners
 }
 
 
@@ -83,8 +87,8 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-    /* code here */
+function getAverageGoals(getFinalsCB) {
+    /* code here */// reduce - add up all the home team and away team goals then divide the , if you want second decimal look up .toFixed(2);
 }
 
 
